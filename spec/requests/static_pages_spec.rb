@@ -5,19 +5,22 @@ describe "StaticPages" do
   
   describe "Home page" do
     it "should have the content 'Say What You Really Think'" do
-      # Run the generator again with the --webrat flag if you want to use webrat methods/matchers
       visit '/static_pages/home'
       expect(page).to have_content('Say What You Really Think')
     end
     it "should have the title 'Home'" do
       visit '/static_pages/home'
-      expect(page).to have_title("#{base_title} | Home")
+      expect(page).to have_title("#{base_title}")
+    end
+    it "Should not have the custome page title" do
+      visit '/static_pages/home'
+      expect(page).not_to have_title("| Home")
     end
   end
   describe "Help page" do
-    it "should have the content 'Say What You Really Think'" do
+    it "should have the content 'Help'" do
       visit '/static_pages/help'
-      expect(page).to have_content('Say What You Really Think')
+      expect(page).to have_content('Help')
     end
     it "should have the title 'Help'" do
       visit '/static_pages/help'
